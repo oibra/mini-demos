@@ -20,9 +20,9 @@ accuracy = function(actual, predicted) {
 
 #test for single k
 pred <- knn(train = scale(ir_train[,-5]), 
-           test = scale(ir_test[,-5]), 
-           cl = ir_train$Species, 
-           k = 40)
+            test = scale(ir_test[,-5]), 
+            cl = ir_train$Species, 
+            k = 40)
 
 accuracy(ir_test$Species, pred)
 
@@ -32,9 +32,9 @@ acc_k = rep(x = 0, times = length(k_to_try))
 
 for(i in seq_along(k_to_try)) {
   pred <- knn(train = scale(ir_train[,-5]), 
-             test = scale(ir_test[,-5]), 
-             cl = ir_train$Species, 
-             k = k_to_try[i])
+              test = scale(ir_test[,-5]), 
+              cl = ir_train$Species, 
+              k = k_to_try[i])
   acc_k[i] <- accuracy(ir_test$Species, pred)
 }
 
@@ -47,4 +47,3 @@ abline(v = which(acc_k == max(acc_k)), col = "darkorange", lwd = 1.5)
 
 # add line for max accuracy seen
 abline(h = max(acc_k), col = "grey", lty = 2)
-
